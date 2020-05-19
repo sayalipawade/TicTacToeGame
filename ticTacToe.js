@@ -15,4 +15,14 @@ function displayBoard()
 		console.log("|"+ board[i]+"|"+board[i+1]+"|"+board[i+2]+"|")
     }
 }
+/**
+ * assign value to user
+ */ 
+function assignSymbol()
+{
+		player="user"
+		console.log("Your symbol is X")
+		user="X"
+		computer="O"
+}
 displayBoard()
