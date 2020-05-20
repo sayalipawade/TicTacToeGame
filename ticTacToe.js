@@ -44,7 +44,7 @@ function switchPlayer()
     }
     else
     {
-        computerPlay()
+       computerPlay()
     }
 }
 
@@ -61,6 +61,7 @@ function userPlay()
             board[position-1]=user
             cellCount++
             displayBoard()
+            rowColumnDiagonalWin(user)
         }
         else
         {
@@ -73,6 +74,46 @@ function userPlay()
         console.log("Game Tie")
         process.exit();
     }
+}
+
+/**
+ * Function to check Winning Condition for row,column,diagonal
+ * @param {*} symbol 
+ */
+function rowColumnDiagonalWin(symbol)
+{
+    diagonal=0
+    column=0
+    for(let row=0;row<7;row=row+3)
+    {
+        if((board[row] == board[row+1] && board[row+1] == board[row+2]) ||
+           (board[column] == board[column+3] && board[column+3] ==  board[column+6]) ||
+           (board[diagonal] == board[diagonal+4] && board[diagonal+4] == board[diagonal+8]) ||
+           (board[diagonal+2] == board[diagonal+4] && board[diagonal+4] == board[diagonal+6]))
+        {
+            if(symbol=="X")
+            {
+                console.log("User Win");
+                process.exit();
+            }
+            else
+            {
+                console.log("Computer Win");
+                process.exit();
+            }
+        }   
+        column=column+1
+    }
+}
+
+/**
+ * To Show Board Condition
+ */
+function checkConditions()
+{
+    displayBoard()
+    flag=1
+    cellCount++
 }
 displayBoard()
 assignSymbol()
