@@ -68,6 +68,7 @@ function userPlay()
             console.log("Invalid Cell")
             userPlay()
         }
+        computerPlay()
     }
     else
     {
@@ -114,6 +115,23 @@ function checkConditions()
     displayBoard()
     flag=1
     cellCount++
+}
+
+function computerPlay()
+{
+    flag=0
+    if(cellCount<maximumCell)
+    {
+        console.log("Computer play")
+        rowColumnDiagonalWin()
+        userPlay()
+    }
+    else
+    {
+        console.log("Game Tie!!!")
+        process.exit()
+    }
+    
 }
 displayBoard()
 assignSymbol()
