@@ -128,6 +128,10 @@ function computerPlay()
         console.log("Computer play")
         winBlockCondition(computer)
         winBlockCondition(user)
+        if(flag==0)
+        {
+            checkCorner()
+        }
         rowColumnDiagonalWin()
         userPlay()
     }
@@ -136,7 +140,6 @@ function computerPlay()
         console.log("Game Tie!!!")
         process.exit()
     }
-    
 }
 
 /**
@@ -159,6 +162,10 @@ function winBlockCondition(symbol)
     }
 }
 
+/**
+ * To check winning condition for computer row  
+ * @param {*} symbol 
+ */
 function computerRowWin(symbol)
 {
     for(let row=0;row<9;row=row+3)
@@ -181,6 +188,32 @@ function computerRowWin(symbol)
     }
 }
 
+/**
+ * To check condition for available corners
+ * @param {*} symbol 
+ */
+function checkCorner()
+{
+    for(let cell=0;cell<7;cell=cell+6)
+    {
+        if(board[cell]==(cell+1))
+        {
+            board[cell]=computer
+            checkConditions()
+            break
+        }
+        else if(board[cell+2]==(cell+3))
+        {
+            board[cell+2]=computer
+            checkConditions()
+            break
+        }
+    }
+}
+
+/**
+ * To check winning condition for computer column
+ */
 function computerColumnWin(symbol)
 {
     for(column=0;column<9;column=column+1)
@@ -203,6 +236,10 @@ function computerColumnWin(symbol)
     }
 }
 
+/**
+ * To Check winning condition for computer diagonal 
+ * @param {*} symbol 
+ */
 function computerDiagonalWin(symbol)
 {
     diagonal=0
