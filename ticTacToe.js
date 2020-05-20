@@ -1,8 +1,8 @@
-console.log("Welcome to Tic Tac Toe")
+console.log("******Welcome to Tic Tac Toe*****")
 let read=require('readline-sync')
 
 /**
- * variable
+ * variables
  */
 let cellCount=0
 let maximumCell=9
@@ -10,26 +10,26 @@ let user="X"
 
 let board=[1,2,3,4,5,6,7,8,9];
 
-
 /**
  * display board
  */
 function displayBoard()
 {
-	for(let i=0;i<7;i=i+3 )
-	{
-		console.log("|"+ board[i]+"|"+board[i+1]+"|"+board[i+2]+"|")
+    for(let i=0;i<7;i=i+3)
+    {
+        console.log("|"+ board[i]+"|"+board[i+1]+"|"+board[i+2]+"|")
     }
 }
+
 /**
- * assign value to user
+ * assign symbol to the player
  */
 function assignSymbol()
 {
-		player="user"
-		console.log("Your symbol is X")
-		user="X"
-		computer="O"
+    player="user"
+    console.log("Your symbol is X")
+    user="X"
+    computer="O"
 }
 
 /**
@@ -37,42 +37,44 @@ function assignSymbol()
  */
 function switchPlayer()
 {
-	toss=Math.floor(Math.random()%2)
-	if(toss==0)
-	{
-		userPlay()
+    toss=Math.floor(Math.random()%2)
+    if(toss==0)
+    {
+        userPlay()
     }
     else
     {
-		computerPlay()
+        computerPlay()
     }
 }
+
 /**
  * user play
  */
 function userPlay()
 {
-	if(cellCount < maximumCell)
-	{
-		 position=read.question("Enter Number Between 1 to 9:")
-		if(board[position-1] == position )
-		{
-			board[position-1]=user
-			cellCount++ 
-			displayBoard()
+    if(cellCount<maximumCell)
+    {
+        position=read.question("Enter Number Between 1 to 9:")
+        if(board[position-1]==position)
+        {
+            board[position-1]=user
+            cellCount++
+            displayBoard()
         }
         else
         {
-	        console.log("Invalid Cell")
-			userPlay()
+            console.log("Invalid Cell")
+            userPlay()
         }
     }
     else
     {
-		console.log("Game tie !!")
-		process.exit();
+        console.log("Game Tie")
+        process.exit();
     }
 }
 displayBoard()
 assignSymbol()
 switchPlayer()
+
