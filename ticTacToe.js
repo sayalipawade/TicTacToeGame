@@ -126,6 +126,8 @@ function computerPlay()
     if(cellCount<maximumCell)
     {
         console.log("Computer play")
+        winBlockCondition(computer)
+        winBlockCondition(user)
         rowColumnDiagonalWin()
         userPlay()
     }
@@ -135,6 +137,105 @@ function computerPlay()
         process.exit()
     }
     
+}
+
+/**
+ * To check Win condition for computer
+ * @param {*} symbol 
+ */
+function winBlockCondition(symbol)
+{
+    if(flag==0)
+    {
+        computerRowWin(symbol)
+    }
+    if(flag==0)
+    {
+        computerColumnWin(symbol)
+    }
+    if(flag==0)
+    {
+        computerDiagonalWin(symbol)
+    }
+}
+
+function computerRowWin(symbol)
+{
+    for(let row=0;row<9;row=row+3)
+    {
+        if(board[row]==symbol && board[row+1] == symbol && board[row+2] == (row+3))
+        {
+            board[row+2]=computer
+            checkConditions()
+        }
+        else if(board[row] == symbol && board[row+2] == symbol && board[row+1] == (row+2))
+        {
+            board[row+1]=computer
+            checkConditions()
+        }
+        else if(board[row+1] ==symbol && board[row+2] == symbol && board[row] == (row+1))
+        {
+            board[row]=computer
+            checkConditions()
+        }
+    }
+}
+
+function computerColumnWin(symbol)
+{
+    for(column=0;column<9;column=column+1)
+    {
+        if(board[column] == symbol && board[column+3] == symbol && board[column+6] == (column+7))
+        {
+            board[column+6]=computer
+            checkConditions()
+        }
+        else if(board[column] == symbol && board[column+6] == symbol && board[column+3] == (column+4))
+        {
+            board[column+3]=computer
+            checkConditions()
+        }
+        else if(board[column+3] == symbol && board[column+6] == symbol && board[column] == (column+1))
+        {
+            board[column]=computer
+            checkConditions()
+        }
+    }
+}
+
+function computerDiagonalWin(symbol)
+{
+    diagonal=0
+    if(board[diagonal+2] == symbol && board[diagonal+4] == symbol && board[diagonal+6] == (diagonal+7))
+    {
+        board[diagonal+6]=computer
+        checkConditions()
+    }
+    else if(board[diagonal+2] == symbol && board[diagonal+6] == symbol && board[diagonal+4] == (diagonal+5))
+    {
+        board[diagonal+4]=computer
+        checkConditions()
+    }
+    else if(board[diagonal+4] == symbol && board[diagonal+6] == symbol && board[diagonal+2] == (diagonal+3))
+    {
+        board[diagonal+2]=computer
+        checkConditions()
+    }
+    else if(board[diagonal] == symbol && board[diagonal+4] == symbol && board[diagonal+8] == (diagonal+9))
+    {
+        board[diagonal+8]=computer
+        checkConditions()
+    }
+    else if(board[diagonal] == symbol && board[diagonal+8] == symbol && board[diagonal+4] == (diagonal+5) )
+    {
+        board[diagonal+4]=computer
+        checkConditions()
+    }
+    else if(board[diagonal+4] == symbol && board[diagonal+8] == symbol && board[diagonal] == (diagonal+1))
+    {
+        board[diagonal]=computer
+        checkConditions()
+    }
 }
 displayBoard()
 assignSymbol()
