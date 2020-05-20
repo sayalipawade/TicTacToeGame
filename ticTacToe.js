@@ -88,9 +88,9 @@ function rowColumnDiagonalWin(symbol)
     for(let row=0;row<7;row=row+3)
     {
         if((board[row] == board[row+1] && board[row+1] == board[row+2]) ||
-           (board[column] == board[column+3] && board[column+3] ==  board[column+6]) ||
-           (board[diagonal] == board[diagonal+4] && board[diagonal+4] == board[diagonal+8]) ||
-           (board[diagonal+2] == board[diagonal+4] && board[diagonal+4] == board[diagonal+6]))
+        (board[column] == board[column+3] && board[column+3] ==  board[column+6]) ||
+        (board[diagonal] == board[diagonal+4] && board[diagonal+4] == board[diagonal+8]) ||
+        (board[diagonal+2] == board[diagonal+4] && board[diagonal+4] == board[diagonal+6]))
         {
             if(symbol=="X")
             {
@@ -117,6 +117,9 @@ function checkConditions()
     cellCount++
 }
 
+/**
+ * Computer play like player
+ */
 function computerPlay()
 {
     flag=0
