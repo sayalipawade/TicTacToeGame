@@ -146,6 +146,10 @@ class TicTacToe
             {
                 this.checkCenter()
             }
+            if(flag==0)
+            {
+                this.checkSides()
+            }
             this.rowColumnDiagonalWin()
             this.userPlay()
         }
@@ -290,7 +294,7 @@ class TicTacToe
     }
 
     /**
-     * Check condition for for center(computer) 
+     * Check condition for center(computer) 
      */
     checkCenter()
     {
@@ -301,6 +305,20 @@ class TicTacToe
             this.checkConditions()
         }
     }
-    
+
+    /**
+     * Check condition for any sides
+     */
+    checkSides()
+    {
+        for(let i=0;i<8;i++)
+        {
+            if(board[i]==(i+1))
+            {
+                board[i]=computer
+                this.checkConditions()
+            }
+        }
+    }
 }
 module.exports=TicTacToe;
